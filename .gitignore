@@ -1,4 +1,5 @@
 .env
 xClaimedBot
 
-/db-data/*
+.idea/
+db-data/*
