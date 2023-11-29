@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    depends_on:
+      - postgres
+    volumes:
+      - ./:/app
+    environment:
+      BOT_HOST: ${BOT_HOST}
+      BOT_USERNAME: ${BOT_USERNAME}
+      BOT_PASSWORD: ${BOT_PASSWORD}
+      BOT_PORT: ${BOT_PORT}
+      BOT_NICK: ${BOT_NICK}
+      DSN: ${DSN}
+
+  postgres:
+    image: 'postgres:14.2'
+    ports:
+      - "5432:5432"
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: claimed
+    volumes:
+      - ./db-data/postgres/:/var/lib/postgresql/models/

@@ -1,0 +1,15 @@
+# .git
+
+.idea
+.env
+.env.example
+go.mod
+Makefile
+
+docker-compose.yaml
+Dockerfile
+
+deploy/*
+
+db-data/**
+
